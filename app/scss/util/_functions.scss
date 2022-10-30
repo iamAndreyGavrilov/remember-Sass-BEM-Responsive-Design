@@ -1,0 +1,21 @@
+@use "sass:math";
+
+// font-size: rem(30);
+@function rem($pixel) {
+  // if если агрумент число, разделить пиксель на 16 и return rems
+  @if math.is-unitless($pixel) {
+    @return math.div($pixel, 16) + rem;
+  }
+  // else выдать ошибку если агрумент число имеет единицу измерения
+  @else {
+    @error 'не используй единицу измерения';
+  }
+}
+
+@function em($pixel) {
+  @if math.is-unitless($pixel) {
+    @return math.div($pixel, 16) + em;
+  } @else {
+    @error 'не используй единицу измерения';
+  }
+}
